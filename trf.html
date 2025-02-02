@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Light</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .traffic-light {
+            width: 100px;
+            height: 300px;
+            background-color: #333;
+            padding: 10px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .light {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #555;
+            opacity: 0.3;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .yellow {
+            background-color: yellow;
+        }
+
+        .green {
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="traffic-light">
+        <div class="light red" id="red"></div>
+        <div class="light yellow" id="yellow"></div>
+        <div class="light green" id="green"></div>
+    </div>
+    <!-- <script src="script.js"></script> -->
+    <script>
+        let redLight = document.getElementById("red");
+        let yellowLight = document.getElementById("yellow");
+        let greenLight = document.getElementById("green");
+
+        let currentLight = "red"; // Initial light is red
+
+        function changeLight() {
+            // Reset all lights
+            redLight.style.opacity = 0.3;
+            yellowLight.style.opacity = 0.3;
+            greenLight.style.opacity = 0.3;
+
+            if (currentLight === "red") {
+                redLight.style.opacity = 1;
+                currentLight = "green";
+            } else if (currentLight === "green") {
+                greenLight.style.opacity = 1;
+                currentLight = "yellow";
+            } else if (currentLight === "yellow") {
+                yellowLight.style.opacity = 1;
+                currentLight = "red";
+            }
+        }
+
+        // Change light every 3 seconds
+        setInterval(changeLight, 3000);
+
+        // Initialize the first light
+        changeLight();
+
+    </script>
+</body>
+
+</html>
